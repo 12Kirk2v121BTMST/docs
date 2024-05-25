@@ -1,6 +1,6 @@
 ---
 title: Using GitHub Copilot Chat in your IDE
-intro: 'Use {% data variables.product.prodname_copilot_chat_short %} in your editor to give code suggestions, explain code, generate unit tests, and suggest code fixes.'
+intro: 'You can start using {% data variables.product.prodname_copilot_chat %} by installing the extension in your preferred environment.'
 topics:
   - Copilot
 redirect_from:
@@ -14,178 +14,114 @@ shortTitle: Use Copilot Chat
 
 {% vscode %}
 
+{% note %}
+
+**Important:**
+
+{% data reusables.gated-features.copilot-chat-callout %}
+
+{% endnote %}
+
+## About {% data variables.product.prodname_copilot_chat %} and {% data variables.product.prodname_vscode %}
+
+{% data reusables.copilot.chat-procedural-intro %}
+
 ## Prerequisites
 
-- **Access to {% data variables.product.prodname_copilot %}**. See "[AUTOTITLE](/copilot/about-github-copilot#getting-access-to-github-copilot)."
-- **Latest version of {% data variables.product.prodname_vscode %}**. See the [{% data variables.product.prodname_vscode %} download page](https://code.visualstudio.com/).
-- **{% data variables.product.prodname_copilot_chat %} extension**. This is automatically installed when you install the {% data variables.product.prodname_copilot %} extension. See the [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) in the Visual Studio Marketplace.
-- **Sign in to {% data variables.product.company_short %} in {% data variables.product.prodname_vscode %}**. If you experience authentication issues, see "[AUTOTITLE](/copilot/troubleshooting-github-copilot/troubleshooting-issues-with-github-copilot-chat-in-ides#troubleshooting-authentication-issues-in-your-editor)."
+{% data reusables.copilot.chat-subscription-prerequisite %}
 
-If you have access to {% data variables.product.prodname_copilot %} via your organization or enterprise, you cannot use {% data variables.product.prodname_copilot_chat %} if your organization owner or enterprise administrator has disabled {% data variables.product.prodname_copilot_chat %}. See "[AUTOTITLE](/copilot/managing-github-copilot-in-your-organization/managing-policies-and-features-for-copilot-in-your-organization)."
+- To use {% data variables.product.prodname_copilot_chat %} in {% data variables.product.prodname_vscode %}, you must have the latest version of {% data variables.product.prodname_vscode %} installed. For more information, see the [{% data variables.product.prodname_vscode %} download page](https://code.visualstudio.com/).
 
-## Submitting prompts
+- To use {% data variables.product.prodname_copilot_chat %} in {% data variables.product.prodname_vscode %}, you must be signed into {% data variables.product.prodname_vscode %} with the same {% data variables.product.prodname_dotcom %} ID that has access to {% data variables.product.prodname_copilot %}.
 
-You can ask {% data variables.product.prodname_copilot_chat_short %} to give code suggestions, explain code, generate unit tests, and suggest code fixes.
+## Enabling or disabling {% data variables.product.prodname_copilot_chat %}
 
-1. Open the chat view by clicking the chat icon in the activity bar or by entering <kbd>Control</kbd>+<kbd>Command</kbd>+<kbd>i</kbd> (Mac) / <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>i</kbd> (Windows/Linux).
+{% data reusables.copilot.enabling-or-disabling-copilot %}
 
-   ![Screenshot of the {% data variables.product.prodname_copilot_chat_short %} icon in the Activity Bar.](/assets/images/help/copilot/vsc-copilot-chat-icon.png)
+## Installing the {% data variables.product.prodname_copilot_chat %} extension in {% data variables.product.prodname_vscode %}
 
-   > [!TIP]
-   >
-   > For additional ways to access {% data variables.product.prodname_copilot_chat_short %}, including inline with your code, see [Additional ways to access {% data variables.product.prodname_copilot_chat_short %}](#additional-ways-to-access-copilot-chat) below.
+To use {% data variables.product.prodname_copilot_chat %}, you must first install the {% data variables.product.prodname_copilot_chat %} extension for {% data variables.product.prodname_vscode %}.
 
-1. Enter a prompt in the prompt box, or click one of the suggested prompts. For example prompts, see "[Example prompts](#example-prompts)" below.
+1. In {% data variables.product.prodname_vscode %}, open the **Extensions** view by clicking the **Extensions** icon in the activity bar on the left side of the {% data variables.product.prodname_vscode %} window.
 
-1. Evaluate {% data variables.product.prodname_copilot_short %}'s response, and make a follow up request if needed.
+    ![Screenshot of the extensions icon in the Activity Bar.](/assets/images/help/copilot/vsc-extensions-icon.png)
 
-   The response may contain text, code blocks, buttons, images, URIs, and file trees. The response often includes interactive elements. For example, the response may include a menu to insert a code block, or a button to invoke a {% data variables.product.prodname_vscode %} command.
+1. In the "Search Extensions in Marketplace" search box, search for the `{% data variables.product.prodname_copilot_chat %}` extension, then click **Install**.
 
-## Using keywords in your prompt
+    ![Screenshot of the {% data variables.product.prodname_copilot_chat %} extension in the Extensions Marketplace.](/assets/images/help/copilot/vscode-extension-search.png)
 
-You can use special keywords to help {% data variables.product.prodname_copilot_short %} understand your prompt.
+1. In the {% data variables.product.prodname_vscode %} window, click **Reload required** to update {% data variables.product.prodname_vscode %}.
+1. If you are prompted to sign in by a toast notification in the bottom right corner of {% data variables.product.prodname_vscode %}, click **Sign in to {% data variables.product.prodname_dotcom %}**. Sign in with the same {% data variables.product.prodname_dotcom %} ID that has a license for {% data variables.product.prodname_copilot %}, or is assigned a seat for {% data variables.product.prodname_copilot %} through an organization.
+1. Follow the prompts in {% data variables.product.prodname_vscode %} and on {% data variables.product.prodname_dotcom %} in your browser to complete the sign in and authentication process.
+1. To confirm that {% data variables.product.prodname_copilot_chat %} has been successfully installed, in the activity bar on the left side of the {% data variables.product.prodname_vscode %} window, click the **{% data variables.product.prodname_copilot_chat_short %}** icon to open the {% data variables.product.prodname_copilot_chat_short %} chat window.
 
-### Chat participants
+    ![Screenshot of the {% data variables.product.prodname_copilot_chat_short %} icon in the Activity Bar.](/assets/images/help/copilot/vsc-copilot-chat-icon.png)
 
-Use chat participants to scope your prompt to a specific domain. To use a chat participant, type `@` in the chat prompt box, followed by a chat participant name. Chat participants include:
+{% note %}
 
-- `@workspace`: Has context about the code in your workspace. Use `@workspace` when you want {% data variables.product.prodname_copilot_short %} to consider the structure of your project, how different parts of your code interact, or design patterns in your project.
-- `@vscode`: Has context about {% data variables.product.prodname_vscode %} commands and features. Use `@vscode` when you want help with {% data variables.product.prodname_vscode %}.
-- `@terminal`: Has context about the {% data variables.product.prodname_vscode %} terminal shell and its contents. Use `@terminal` when you want help creating or debugging terminal commands.
+**Note:** If you experience authentication issues after installing the extension, see "[AUTOTITLE](/copilot/troubleshooting-github-copilot/troubleshooting-issues-with-github-copilot-chat-in-ides#troubleshooting-authentication-issues-in-your-editor)."
 
-To see all available chat participants, type `@` in the chat prompt box. See also [Chat participants](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants) in the {% data variables.product.prodname_vscode %} documentation.
+{% endnote %}
 
-### Slash commands
+## Asking your first question
 
-Use slash commands to avoid writing complex prompts for common scenarios. To use a slash command, type `/` in the chat prompt box, followed by a command. Slash commands include:
+{% data reusables.copilot.copilot-chat-exclusively-code-questions %}
 
-- `/tests`: Generate unit tests for the selected code
-- `/fix`: Propose a fix for problems in the selected code
-- `/explain`: Explain the selected code
-- `/clear`: Start a new chat
+1. In the {% data variables.product.prodname_vscode %} activity bar, click the **{% data variables.product.prodname_copilot_chat_short %}** icon to open the {% data variables.product.prodname_copilot_chat_short %} chat window.
 
-To see all available slash commands, type `/` in the chat prompt box. See also [Slash commands](https://code.visualstudio.com/docs/copilot/copilot-chat#_slash-commands) in the {% data variables.product.prodname_vscode %} documentation.
+    ![Screenshot of the {% data variables.product.prodname_copilot_chat_short %} icon in the Activity Bar.](/assets/images/help/copilot/vsc-copilot-chat-icon.png)
 
-### Chat variables
+1. At the bottom of the {% data variables.product.prodname_copilot_chat_short %} window, in the **Ask {% data variables.product.prodname_copilot_short %} or type / for commands** text box, type a coding-related question, then press **Enter**. For example, type "How do I write a function that returns the sum of two numbers?".
+1. {% data variables.product.prodname_copilot_chat_short %} will process your question and provide an answer, with code suggestions when appropriate, in the chat window.
 
-Use chat variables to include specific context in your prompt. To use a chat variable, type `#` in the chat prompt box, followed by a chat variable. Chat variables include:
+   If your question is outside the scope of {% data variables.product.prodname_copilot_chat %}, it will tell you and may suggest an alternative question to ask.
 
-- `#file`: Include a specific file as context in the chat.
-- `#git`: Include information about the current Git repository.
-- `#terminalLastCommand`: Include the last run command in the active {% data variables.product.prodname_vscode %} terminal.
+1. Optionally, if {% data variables.product.prodname_copilot_chat_short %} suggests a follow-up question above the **Ask {% data variables.product.prodname_copilot_short %} or type / for commands** text box, click the follow-up question to ask it.
 
-To see all available chat variables, type `#` in the chat prompt box. See also [Chat variables](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-variables) in the {% data variables.product.prodname_vscode %} documentation.
+## Using code suggestions from {% data variables.product.prodname_copilot_chat %}
 
-## Example prompts
+When {% data variables.product.prodname_copilot_chat_short %} provides code suggestions, you have a few options for how to use them.
 
-You can ask {% data variables.product.prodname_copilot_chat_short %} specific questions about your project or general software questions. You can also ask {% data variables.product.prodname_copilot_chat_short %} to write code, fix errors, write tests, and document code.
+1. In the {% data variables.product.prodname_copilot_chat_short %} window, to show the options for a code suggestion, hover over the suggestion.
 
-### Ask general software questions
+    ![Screenshot of code suggestion options in the {% data variables.product.prodname_copilot_chat_short %} window.](/assets/images/help/copilot/vsc-code-suggestion-options.png)
 
-You can ask {% data variables.product.prodname_copilot_chat_short %} general software questions. For example:
+1. Choose one of the options for using the code suggestion.
+    - To copy the code suggestion to your clipboard, click the **Copy** icon.
+    - To insert the code suggestion into your code at the current location of your cursor, click the **Insert at Cursor** icon.
+    - To view additional options, click the **...** icon.
+        - To create a new file and insert the suggestion into it, click **Insert Into New File**.
+        - To run the code suggestion in the {% data variables.product.prodname_vscode %} terminal, click **Run in Terminal**.
 
-- `tell me about nodejs web server frameworks`
-- `how to create an express app`
-- `@terminal how to update an npm package` (uses the @terminal [chat participant](#chat-participants))
+## Asking {% data variables.product.prodname_copilot_chat %} questions about your code
 
-### Ask questions about your project
+{% data variables.product.prodname_copilot_chat_short %} can provide answers and support with a wide range of coding related topics.
 
-You can ask {% data variables.product.prodname_copilot_chat_short %} questions about your project.
+1. In {% data variables.product.prodname_vscode %}, open the file you want {% data variables.product.prodname_copilot_chat_short %} to help you with.
+1. In the activity bar, click the **{% data variables.product.prodname_copilot_chat_short %}** icon to open the {% data variables.product.prodname_copilot_chat_short %} chat window.
 
-- `what sorting algorithm does this function use`
-- `@workspace how are notifications scheduled`
-- `#file:gameReducer.js #file:gameInit.js how are these files related`
+{% data reusables.copilot.chat-asking-questions %}
 
-To give {% data variables.product.prodname_copilot_short %} the correct context, try some of these strategies:
+{% note %}
 
-- Highlight relevant lines of code
-- Use chat variables like `#selection`, `#file`, `#editor`, `#codebase`, or `#git`
-- Use the `@workspace` chat participant
+**Note:** To find out about other special commands you can use with {% data variables.product.prodname_copilot_chat_short %}, enter `/help` in the chat input box. For more information on slash commands, see [Using {% data variables.product.prodname_copilot_chat_short %} in {% data variables.product.prodname_vscode_shortname %}](https://code.visualstudio.com/docs/copilot/copilot-chat#_slash-commands) in the {% data variables.product.prodname_vscode_shortname %} documentation.
 
-### Write code
+{% endnote %}
 
-You can ask {% data variables.product.prodname_copilot_short %} to write code for you. For example:
+## Sharing feedback about {% data variables.product.prodname_copilot_chat %}
 
-- `write a function to sum all numbers in a list`
-- `add error handling to this function`
-- `@workspace add form validation, similar to the newsletter page`
+To share feedback about {% data variables.product.prodname_copilot_chat_short %}, you can use the **share feedback** button in the {% data variables.product.prodname_copilot_chat_short %} window.
 
-When {% data variables.product.prodname_copilot_short %} returns a code block, the response includes options to copy the code, or to insert the code at your cursor, into a new file, or into the terminal.
-
-### Set up a new project
-
-Use the `/new` slash command to set up a new project. For example:
-
-- `/new react app with typescript`
-- `/new python django web application`
-- `/new node.js express server`
-
-Copilot will suggest a directory structure and provide a button to create the suggested files and contents. To preview a suggested file, select the file name in the suggested directory structure.
-
-Use the `/newNotebook` slash command to set up a new Jupyter notebook. For example:
-
-- `/newNotebook retrieve the titanic dataset and use Seaborn to plot the data`
-
-### Fix, improve, and refactor code
-
-If your active file contains an error, use the `/fix` slash command to ask {% data variables.product.prodname_copilot_short %} to fix the error.
-
-You can also make general requests to improve or refactor your code.
-
-- `how would you improve this code?`
-- `translate this code to C#`
-- `add error handling to this function`
-
-### Write tests
-
-Use the `/tests` slash command to ask {% data variables.product.prodname_copilot_short %} to write tests for the active file or selected code. For example:
-
-- `/tests`
-- `/tests using the Jest framework`
-- `/tests ensure the function rejects an empty list`
-
-The `/tests` slash command writes tests for existing code. If you prefer to write tests before writing code (test driven development), omit the `/tests` command. For example:
-
-- `Add tests for a JavaScript function that should sum a list of integers`
-
-### Ask questions about {% data variables.product.prodname_vscode %}
-
-Use the `@vscode` chat participant to ask specific questions about {% data variables.product.prodname_vscode %}. For example:
-
-- `@vscode how to debug a node.js app`
-- `@vscode how do I change my {% data variables.product.prodname_vscode %} colors`
-- `@vscode how to change key bindings`
-
-### Ask questions about the command line
-
-Use the `@terminal` chat participant to ask specific questions about the command line. For example:
-
-- `@terminal find the largest file in the src directory`
-- `@terminal #terminalLastCommand` to explain the last command and any errors
-
-## Additional ways to access {% data variables.product.prodname_copilot_chat_short %}
-
-In addition to submitting prompts through the chat view, you submit prompts in other ways:
-
-- **Inline**: To start an inline chat directly in the editor or integrated terminal, enter <kbd>Command</kbd>+<kbd>i</kbd> (Mac) / <kbd>Ctrl</kbd>+<kbd>i</kbd> (Windows/Linux).
-- **Quick chat**: To open the quick chat dropdown, enter <kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>i</kbd> (Mac) / <kbd>Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>i</kbd> (Windows/Linux)
-- **Smart actions**: To submit prompts via the context menu, right click in your editor, select **Copilot** in the menu that appears, then select one of the actions. Smart actions can also be accessed via the sparkle icon that sometimes appears when you select a line of code.
-
-See [inline chat](https://code.visualstudio.com/docs/copilot/copilot-chat#_inline-chat), [quick chat](https://code.visualstudio.com/docs/copilot/copilot-chat#_quick-chat), and [chat smart actions](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-smart-actions) in the {% data variables.product.prodname_vscode %} documentation for more details.
-
-## Sharing feedback
-
-To indicate whether a response was helpful, use the thumbs up and thumbs down icons that appear next to the response.
-
-To leave feedback about the {% data variables.product.prodname_copilot_chat %} extension, open an issue in the [microsoft/vscode-copilot-release](https://github.com/microsoft/vscode-copilot-release/issues) repository.
+1. At the top of the {% data variables.product.prodname_copilot_chat_short %} window, click the ellipsis (**...**), then click **Send Chat Feedback**.
+1. In your browser, in the **vscode-copilot-release** repository, click **New issue**.
+1. Choose one of the options that are displayed:
+    - To open an issue to report a bug, click **Bug report for {% data variables.product.prodname_copilot_chat %}**.
+    - To open an issue to request a feature, click **Feature request for {% data variables.product.prodname_copilot_chat %}**.
+    - To report a security vulnerability, click **Report a security vulnerability**.
+    - To ask a question in a discussion, click **Questions**.
 
 ## Further reading
 
-- [Using Copilot Chat in VS Code](https://code.visualstudio.com/docs/copilot/copilot-chat) and [Getting started with GitHub Copilot Chat in VS Code](https://code.visualstudio.com/docs/copilot/getting-started-chat) in the {% data variables.product.prodname_vscode %} documentation
-{% ifversion ghec %}
-- "[AUTOTITLE](/enterprise-cloud@latest/copilot/github-copilot-enterprise/copilot-chat-in-github/using-github-copilot-chat-in-githubcom)"
-{% endif %}
-- "[AUTOTITLE](/copilot/github-copilot-chat/about-github-copilot-chat)"
 - "[AUTOTITLE](/free-pro-team@latest/site-policy/github-terms/github-terms-for-additional-products-and-features#github-copilot)"{% ifversion ghec %}
 - [{% data variables.product.prodname_copilot %} Trust Center](https://resources.github.com/copilot-trust-center){% endif %}
 - [{% data variables.product.prodname_copilot %} FAQ](https://github.com/features/copilot#faq)
